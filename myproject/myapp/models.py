@@ -1,13 +1,13 @@
 from django.db import models
 
 # Create your models here.
-class RegisterModel(models.Model):
+class UserModel(models.Model):
     username = models.CharField(max_length=100)
     email = models.EmailField()
     password = models.CharField(max_length=100)
 
     class Meta:
-        db_table = 'RegisterModel'
+        db_table = 'UserModel'
 
 class Task(models.Model):
     title = models.CharField(max_length=200)
