@@ -11,7 +11,7 @@ def signup(request):
         username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
-        RegisterModel.objects.create(
+        UserModel.objects.create(
             username = username,
             email = email,
             password = password
@@ -24,7 +24,7 @@ def signin(request):
     if request.method == 'POST':
         email = request.POST['email']
         password = request.POST['password']
-        if RegisterModel.objects.filter(email=email, password=password).exists():
+        if UserModel.objects.filter(email=email, password=password).exists():
             return redirect('about')
         else:
             return redirect('signup')
@@ -41,7 +41,7 @@ def todo(request):
         if title:
             Task.objects.create(title=title)
             return redirect('todo') 
-    return render(request, 'todo.html', {'tasks': tasks})
+    return render(request, 'todolist.html', {'tasks': tasks})
 
 def delete_task(request, task_id):
     task = Task.objects.get(id=task_id)
